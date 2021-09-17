@@ -10,7 +10,7 @@ pipeline {
       steps {
         container(name: 'kaniko') {
           sh '''echo \'{ "credsStore": "ecr-login" }\' > /kaniko/.docker/config.json
-/kaniko/executor -f `pwd`/compose/Dockerfile.db -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookdb-dev-${BUILD_NUMBER}'''
+/kaniko/executor -f `pwd`/compose/Dockerfile.db -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookdb-dev-42'''
         }
 
       }
@@ -19,7 +19,7 @@ pipeline {
       steps {
         container(name: 'kaniko') {
           sh '''echo \'{ "credsStore": "ecr-login" }\' > /kaniko/.docker/config.json
-/kaniko/executor -f `pwd`/compose/Dockerfile.api -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookapi-dev-${BUILD_NUMBER}'''
+/kaniko/executor -f `pwd`/compose/Dockerfile.api -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookapi-dev-42'''
         }
       }
     }
@@ -27,7 +27,7 @@ pipeline {
       steps {
         container(name: 'kaniko') {
           sh '''echo \'{ "credsStore": "ecr-login" }\' > /kaniko/.docker/config.json
-/kaniko/executor -f `pwd`/autoclient/Dockerfile.autoclient -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookac-dev-${BUILD_NUMBER}'''
+/kaniko/executor -f `pwd`/autoclient/Dockerfile.autoclient -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:orderbookac-dev-42'''
         }
       }
     }
