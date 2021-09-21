@@ -26,7 +26,7 @@ pipeline {
     stage('Build Trading Client') {
       steps {
         container(name: 'kaniko') {
-          sh '''echo \'{ "credsStore": "ecr-login" }\' > /kaniko/.docker/config.json
+          sh '''echo '{ "credsStore": "ecr-login" }\' > /kaniko/.docker/config.json
 /kaniko/executor -f `pwd`/autoclient/Dockerfile.autoclient -c `pwd` --insecure --skip-tls-verify --cache=false --destination=${ECR_REPO}:${IMAGENAME}api-dev-${BUILD_NUMBER}'''
         }
       }
